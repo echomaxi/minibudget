@@ -1,0 +1,13 @@
+html {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+@media screen and (max-width: 766px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
