@@ -10,7 +10,7 @@ $mainCategory_set = getMainCategory();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Админка</title>
+    <title>Общие Категории</title>
 </head>
 
 <body class="bg-slate-300">
@@ -48,17 +48,21 @@ $mainCategory_set = getMainCategory();
     <main>
         <div class="container mx-auto px-4">
             <div class="my-4">
-                <h2 class="text-2xl">Общие Категории</h2>
+                <h2 class="text-2xl mb-4">Общие Категории</h2>
 
-                <form action="add.php" method="post" name="new_main_category">
-                  <label for="main_category">Название новой общей категории</label>
-                  <input type="text" name="main_category" id="main_category" class="mb-2"><br>
-                  <label for="prime_category">Основная категория</label>
+                <form action="add.php" method="post">
+                    <label for="main_category">Название новой общей категории</label>
+                    <input type="text" name="main_category" id="main_category" class="mb-2"><br>
+
+                    <label for="prime_category">Основная категория</label>
                     <select name="prime_category" id="prime_category">
                         <option value="">Выбирай</option>
-                        <?php foreach ($primeCategory_set as $prime_item) : ?>
-                        <option value="<?php echo $prime_item['prime_id']; ?>"><?php echo $prime_item['prime_name']; ?></option>
-                        <?php endforeach; ?>
+
+                        <?php foreach ($primeCategory_set as $prime_item) { ?>
+                        <option value="<?php echo $prime_item['prime_id']; ?>"><?php echo $prime_item['prime_name']; ?>
+                        </option>
+                        <?php } ?>
+
                     </select>
                     <input type="submit" value="Добавить"
                         class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer">

@@ -9,7 +9,7 @@ $primeCategory_set = getPrimeCategory();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Админка</title>
+    <title>Основные Категории</title>
 </head>
 
 <body class="bg-slate-300">
@@ -48,7 +48,7 @@ $primeCategory_set = getPrimeCategory();
     <main>
         <div class="container mx-auto px-4">
             <div class="my-4">
-                <h2 class="mb-4">Основные Категории</h2>
+                <h2 class="text-2xl mb-4">Основные Категории</h2>
 
                 <form action="add.php" method="POST">
                     <input type="text" name="prime_name">

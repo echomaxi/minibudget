@@ -1,4 +1,4 @@
-<?php require_once('private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php'); ?>
 <!doctype html>
 <html lang="ru">
 
@@ -21,36 +21,16 @@
 <body>
     <div class="container">
         <h1>Запись успешно добавлена!</h1>
-        <a href="index.php"><button class="btn btn-success">Обратно</button></a>
+        <a href="index.php"><button
+                class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer">Обратно</button></a>
     </div>
 
     <?php
+  $sub_cat_name = $_POST['sub_cat_name'];
+  $main_cat_id = $_POST['main_cat'];
 
-  $name = $_POST['name'];
-  $price = $_POST['price'];
-  $place = $_POST['place'];
-  $date = $_POST['date'];
-  $time = $_POST['time'];
-
-  $query = "INSERT INTO mbudget (name, price, place, date, time) VALUES('$name', '$price', '$place', '$date', '$time')";
-
-  $result = mysqli_query($dbc, $query);
-  if ($result) {
-    return true;
-  } else {
-    // UPDATE failed
-    echo mysqli_error($dbc);
-    db_disconnect($dbc);
-    exit;
-  }
-
+  insertSubCategory($sub_cat_name, $main_cat_id);
   ?>
-
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
 
 </body>
 

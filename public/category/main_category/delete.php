@@ -1,39 +1,61 @@
-<?php require_once('private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php'); ?>
 <?php
 $id = $_GET['id'];
-$query = "DELETE FROM mbudget WHERE id = $id LIMIT 1";
-$result = mysqli_query($dbc, $query);
-if (!$result) {
-    echo mysqli_error($dbc);
-    db_disconnect($dbc);
-}
-
+deleteMainCategory($id);
 ?>
 <!doctype html>
 <html lang="ru">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Готово</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Админка</title>
 </head>
 
-<body>
-    <div class="container">
-        <h1>Запись успешно удалена!</h1>
-        <a href="index.php"><button class="btn btn-success">Обратно</button></a>
-    </div>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+<body class="bg-slate-300">
 
+    <header>
+        <a href="<?php echo '../../index.php' ?>">Панель управления</a>
+    </header>
+
+    <nav class="mt-2 ml-2">
+        <div class="bg-slate-500 text-white">
+            <ul class="flex flex-col">
+                <li>
+                    <a href="<?php echo '../../index.php' ?>">
+                        Главная
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo 'index.php' ?>">
+                        Основные Категории
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo '../main_category/index.php' ?>">
+                        Общие Категории
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo '../sub_category/index.php' ?>">
+                        Подкатегории
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <?php
+
+        ?>
+        <div class="container mx-auto px-4">
+            <h1 class="mt-4">Запись успешно удалена!</h1>
+            <a href="index.php"><button
+                    class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer mt-2">Обратно</button></a>
+        </div>
+    </main>
 </body>
 
 </html>

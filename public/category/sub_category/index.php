@@ -2,7 +2,6 @@
 <?php
 $query = "SELECT * FROM mbudget ORDER BY id DESC";
 $result = mysqli_query($dbc, $query);
-
 $mainCategory_set = getMainCategory();
 $subCategory_set = getSubCategory();
 ?>
@@ -13,7 +12,7 @@ $subCategory_set = getSubCategory();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Админка</title>
+    <title>Подкатегории</title>
 </head>
 
 <body class="bg-slate-300">
@@ -51,14 +50,27 @@ $subCategory_set = getSubCategory();
 
     <main>
         <div class="container mx-auto my-4 px-4">
-            <h2>Подкатегории</h2>
+            <h2 class="text-2xl mb-4">Подкатегории</h2>
+            <form action="add.php" method="post">
+                <label for="name">Название</label>
+                <input type="text" name="sub_cat_name" id="sub_cat_name" class="mb-2"><br>
+                <label for="sub_cat_name">Общая Категоря</label>
+                <select name="main_cat" id="main_cat">
+                    <?php foreach ($mainCategory_set as $main_item) { ?>
+                    <option value="<?php echo $main_item['main_cat_id']; ?>"><?php echo $main_item['main_cat_name']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
+                <input type="submit" value="Добавить"
+                    class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer">
+            </form>
             <div>
                 <table class="table-auto text-left border-separate">
 
                     <thead>
                         <tr>
-                            <th>Категория</th>
                             <th>Название</th>
+                            <th>Общая Категория</th>
                             <th>Действия</th>
                         </tr>
                     </thead>
@@ -68,9 +80,9 @@ $subCategory_set = getSubCategory();
                         <?php $main_item = getMainCategory_by_id($sub_cat_item['main_cat_id']); ?>
                         <tr>
                             <td class="py-1 px-2 border-dashed border-sky-700 border rounded">
-                                <?php echo $main_item['main_cat_name']; ?></td>
-                            <td class="py-1 px-2 border-dashed border-sky-700 border rounded">
                                 <?php echo $sub_cat_item['sub_cat_name']; ?></td>
+                            <td class="py-1 px-2 border-dashed border-sky-700 border rounded">
+                                <?php echo $main_item['main_cat_name']; ?></td>
                             <td class="py-1 px-2 border-dashed border-sky-700 border rounded"><a
                                     href="<?php echo 'edit.php?id=' . h(u($main_cat_item['main_cat_id'])); ?>"
                                     class="bg-cyan-900 hover:bg-cyan-700 px-2 py-1 rounded text-white">Изменить</a>
