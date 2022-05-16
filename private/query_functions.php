@@ -106,6 +106,27 @@ function insertMainCategory($main_cat_name, $prime_id)
   }
 }
 
+function updateMainCategory($main_item)
+{
+
+  global $dbc;
+  $query = "UPDATE main_category SET ";
+  $query .= "main_cat_name='" . $main_item['main_cat_name'] . "' ";
+  $query .= "WHERE main_cat_id='" . $main_item['main_cat_id'] . "'";
+  $query .= "LIMIT 1";
+
+  $result = mysqli_query($dbc, $query);
+  // For UPDATE statements, $result is true/false
+  if ($result) {
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($dbc);
+    db_disconnect($dbc);
+    exit;
+  }
+}
+
 function deleteMainCategory($id)
 {
 

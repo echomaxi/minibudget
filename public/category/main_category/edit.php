@@ -1,57 +1,66 @@
-<?php require_once('private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php'); ?>
 <?php
 $id = $_GET['id'];
-$query = "SELECT * FROM mbudget WHERE id='" . $id . "'";
-$result = mysqli_query($dbc, $query);
-
-$item_set = mysqli_fetch_assoc($result);
+$main_item = getMainCategory_by_id($id);
 ?>
 <!doctype html>
 <html lang="ru">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="styles.css" rel="stylesheet">
-    <title>Расходы</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Админка</title>
 </head>
 
-<body>
-    <div class="container">
-        <h1>Редактирование записи</h1>
-        <a href="index.php"><button class="btn btn-primary mb-3">Обратно</button></a>
-        <form class="row gy-2 gx-3 align-items-center form" method="post"
-            action="<?php echo 'update.php?id=' . $id; ?>">
-            <div class="col mb-3">
-                <label for="name">Название</label>
-                <input type="text" class="form-control" name="name" value="<?php echo  $item_set['name']; ?>">
-            </div>
-            <div class="col mb-3">
-                <label for="price">Сумма</label>
-                <div class="input-group">
-                    <div class="input-group-text">$</div>
-                    <input type="number" step="0.01" class="form-control" name="price"
-                        value="<?php echo  $item_set['price']; ?>">
-                </div>
-            </div>
-            <div class="col mb-3">
-                <label for="place">Место</label>
-                <input type="text" class="form-control" name="place" value="<?php echo  $item_set['place']; ?>">
-            </div>
-            <div class="col mb-3">
-                <label for="date">Дата</label>
-                <input type="date" class="form-control" name="date" value="<?php echo  $item_set['date']; ?>">
-            </div>
-            <div class="col mb-3">
-                <label for="time">Время</label>
-                <input type="time" class="form-control" name="time" value="<?php echo  $item_set['time']; ?>">
-            </div>
-            <div class="col-auto mb-3">
-                <button type="submit" class="btn btn-warning">Изменить</button>
-            </div>
-        </form>
-    </div>
+<body class="bg-slate-300">
+    <header>
+        <a href="<?php echo '../../index.php' ?>">Панель управления</a>
+    </header>
+
+    <nav class="mt-2 ml-2">
+        <div class="bg-slate-500 text-white">
+            <ul class="flex flex-col">
+                <li>
+                    <a href="<?php echo '../../index.php' ?>">
+                        Главная
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo 'index.php' ?>">
+                        Основные Категории
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo '../main_category/index.php' ?>">
+                        Общие Категории
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo '../sub_category/index.php' ?>">
+                        Подкатегории
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container mx-auto px-4">
+            <h1 class="mt-4">Изменение записи</h1>
+            <a href="index.php"><button
+                    class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer mt-2">Обратно</button></a>
+
+            <form action="<?php echo 'update.php?id=' . $id ?>" method="post" class="my-4">
+
+                <label for="item_name">Имя Общей Категории</label><br>
+                <input type="text" name="item_name" id="item_name" value="<?php echo $main_item['main_cat_name'] ?>">
+
+                <input type="submit" value="Изменить"
+                    class="bg-cyan-900 hover:bg-cyan-700 px-2 py-1 rounded text-white">
+
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>

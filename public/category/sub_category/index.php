@@ -83,7 +83,7 @@ $subCategory_set = getSubCategory();
                                 <?php echo $sub_cat_item['sub_cat_name']; ?></td>
                             <td class="py-1 px-2 border-dashed border-sky-700 border rounded">
                                 <?php echo $main_item['main_cat_name']; ?></td>
-                            <td class="py-1 px-2 border-dashed border-sky-700 border rounded"><a
+                            <td class="py-1 px-2"><a
                                     href="<?php echo 'edit.php?id=' . h(u($main_cat_item['main_cat_id'])); ?>"
                                     class="bg-cyan-900 hover:bg-cyan-700 px-2 py-1 rounded text-white">Изменить</a>
                                 <a href="<?php echo 'delete.php?id=' . h(u($main_cat_item['main_cat_id'])); ?>"

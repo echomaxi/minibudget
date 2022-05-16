@@ -2,8 +2,6 @@
 <?php
 $id = $_GET['id'];
 $prime_item = getPrimeCategory_by_id($id);
-// var_dump($prime_item);
-// exit;
 ?>
 <!doctype html>
 <html lang="ru">
