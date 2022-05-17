@@ -2,6 +2,8 @@
 <?php
 $id = $_GET['id'];
 $main_item = getMainCategory_by_id($id);
+$prime_id = $main_item['prime_cat_id'];
+$prime_item = getPrimeCategory_by_id($prime_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -14,6 +16,7 @@ $main_item = getMainCategory_by_id($id);
 </head>
 
 <body class="bg-slate-300">
+
     <header>
         <a href="<?php echo '../../index.php' ?>">Панель управления</a>
     </header>
@@ -44,23 +47,29 @@ $main_item = getMainCategory_by_id($id);
             </ul>
         </div>
     </nav>
+
     <main>
         <div class="container mx-auto px-4">
+
             <h1 class="mt-4">Изменение записи</h1>
             <a href="index.php"><button
                     class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer mt-2">Обратно</button></a>
-
             <form action="<?php echo 'update.php?id=' . $id ?>" method="post" class="my-4">
-
                 <label for="item_name">Имя Общей Категории</label><br>
-                <input type="text" name="item_name" id="item_name" value="<?php echo $main_item['main_cat_name'] ?>">
-
+                <input type="text" name="item_name" id="item_name"
+                    value="<?php echo $main_item['main_cat_name'] ?>"><br>
+                <label for="prime_item_name">Основная Категории</label><br>
+                <select name="prime_item_name" id="prime_item_name">
+                    <option value="<?php echo $prime_item['prime_id']; ?>">
+                        <?php echo $prime_item['prime_name']; ?>
+                    </option>
+                </select>
                 <input type="submit" value="Изменить"
                     class="bg-cyan-900 hover:bg-cyan-700 px-2 py-1 rounded text-white">
-
             </form>
         </div>
     </main>
+
 </body>
 
 </html>
