@@ -151,7 +151,7 @@ function getSubCategory()
 function getSubCategory_by_id($id)
 {
   global $dbc;
-  $query = "SELECT * FROM main_category WHERE sub_cat_id='" . $id . "'";
+  $query = "SELECT * FROM sub_category WHERE sub_cat_id='" . $id . "'";
   $result = mysqli_query($dbc, $query);
   confirm_result_set($result);
   $main_item = mysqli_fetch_assoc($result);
@@ -172,5 +172,16 @@ function insertSubCategory($sub_cat_name, $main_cat_id)
     echo mysqli_error($dbc);
     db_disconnect($dbc);
     exit;
+  }
+}
+
+function deleteSubCategory($id)
+{
+  global $dbc;
+  $query = "DELETE FROM sub_category WHERE sub_cat_id = $id LIMIT 1";
+  $result = mysqli_query($dbc, $query);
+  if (!$result) {
+    echo mysqli_error($dbc);
+    db_disconnect($dbc);
   }
 }

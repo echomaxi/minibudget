@@ -5,57 +5,50 @@
 <html lang="ru">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Готово</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Подкатегории</title>
 </head>
 
-<body>
-    <div class="container">
-        <h1>Запись успешно изменена!</h1>
-        <a href="index.php"><button class="btn btn-primary">Обратно</button></a>
-        <?php
-        $item = [];
-        $item['id'] = $id;
-        $item['name'] = $_POST['name'] ?? '';
-        $item['price'] = $_POST['price'] ?? '';
-        $item['place'] = $_POST['place'] ?? '';
-        $item['date'] = $_POST['date'] ?? '';
-        $item['time'] = $_POST['time'] ?? '';
+<body class="bg-slate-500">
+    <div class="flex px-1">
+        <nav class="mr-1 w-1/6">
+            <div class="bg-slate-500 text-white">
+                <ul class="flex flex-col border-4 border-white px-4 py-2 my-1">
+                    <li>
+                        <a href="<?php echo '../../index.php' ?>" class="hover:text-sky-400">
+                            Главная
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo 'index.php' ?>" class="hover:text-sky-400">
+                            Основные Категории
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo '../main_category/index.php' ?>" class="hover:text-sky-400">
+                            Общие Категории
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo '../sub_category/index.php' ?>"
+                            class="underline decoration-sky-500 decoration-2 hover:text-sky-400">
+                            Подкатегории
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main сlass="w-5/6">
+            <div class="flex flex-col justify-center px-4 py-2 my-1 border-4 border-white bg-slate-300">
+                <h2 class="text-2xl mb-4">Запись успешно изменена!</h2>
+                <a href="index.php"><button
+                        class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer mt-2">Обратно</button></a>
 
-        $sql = "UPDATE mbudget SET ";
-        $sql .= "name='" . $item['name'] . "', ";
-        $sql .= "price='" . $item['price'] . "', ";
-        $sql .= "place='" . $item['place'] . "', ";
-        $sql .= "date='" . $item['date'] . "', ";
-        $sql .= "time='" . $item['time'] . "' ";
-        $sql .= "WHERE id='" . $item['id'] . "' ";
-        $sql .= "LIMIT 1";
-
-        $result = mysqli_query($dbc, $sql);
-        if ($result) {
-            return true;
-        } else {
-            // UPDATE failed
-            echo mysqli_error($dbc);
-            db_disconnect($dbc);
-            exit;
-        }
-        // $result = mysqli_query($dbc, $sql) or die('Query request failed!');
-
-        ?>
+            </div>
+        </main>
     </div>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
 
 </body>
 
