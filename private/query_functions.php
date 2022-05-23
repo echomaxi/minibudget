@@ -175,6 +175,27 @@ function insertSubCategory($sub_cat_name, $main_cat_id)
   }
 }
 
+function updateSubCategory($sub_item)
+{
+
+  global $dbc;
+  $query = "UPDATE sub_category SET ";
+  $query .= "sub_cat_name='" . $sub_item['sub_cat_name'] . "' ";
+  $query .= "WHERE sub_cat_id='" . $sub_item['sub_cat_id'] . "'";
+  $query .= "LIMIT 1";
+
+  $result = mysqli_query($dbc, $query);
+  // For UPDATE statements, $result is true/false
+  if ($result) {
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($dbc);
+    db_disconnect($dbc);
+    exit;
+  }
+}
+
 function deleteSubCategory($id)
 {
   global $dbc;

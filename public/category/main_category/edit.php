@@ -12,11 +12,10 @@ $prime_item = getPrimeCategory_by_id($prime_id);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Админка</title>
+    <title>Общие Категории</title>
 </head>
 
 <body class="bg-slate-500">
-
     <header class="bg-slate-500 text-white px-4 py-2 border-4 border-white mx-1">
         <a href="<?php echo '../../index.php' ?>">Панель управления</a>
     </header>
@@ -48,10 +47,8 @@ $prime_item = getPrimeCategory_by_id($prime_id);
                 </ul>
             </div>
         </nav>
-
         <main class="w-5/6">
             <div class="flex flex-col justify-center px-4 py-2 my-1 border-4 border-white bg-slate-300">
-
                 <h2 class="text-2xl mt-4">Изменение записи</h2>
                 <a href="index.php"><button
                         class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer mt-2">Обратно</button></a>

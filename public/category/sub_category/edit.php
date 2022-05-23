@@ -2,10 +2,8 @@
 <?php
 $sub_id = $_GET['id'];
 $sub_item = getSubCategory_by_id($sub_id);
-
 $main_cat_id = $sub_item['main_cat_id'];
 $main_cat_item = getMainCategory_by_id($main_cat_id);
-
 ?>
 <!doctype html>
 <html lang="ru">
@@ -18,11 +16,9 @@ $main_cat_item = getMainCategory_by_id($main_cat_id);
 </head>
 
 <body class="bg-slate-500">
-
     <header class="bg-slate-500 text-white px-4 py-2 border-4 border-white mx-1">
         <a href="<?php echo '../../index.php' ?>">Панель управления</a>
     </header>
-
     <div class="flex px-1">
         <nav class="mr-1 w-1/6">
             <div class="bg-slate-500 text-white">
@@ -56,7 +52,7 @@ $main_cat_item = getMainCategory_by_id($main_cat_id);
                 <h2 class="text-2xl mb-4">Изменение записи</h2>
                 <a href="index.php"><button
                         class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer mt-2">Обратно</button></a>
-                <form action="<?php echo 'update.php?id=' . $id ?>" method="post" class="my-4">
+                <form action="<?php echo 'update.php?id=' . $sub_id ?>" method="post" class="my-4">
                     <label for="sub_item_name">Имя подкатегории</label><br>
                     <input type="text" name="sub_item_name" id="sub_item_name"
                         value="<?php echo $sub_item['sub_cat_name'] ?>"><br>
