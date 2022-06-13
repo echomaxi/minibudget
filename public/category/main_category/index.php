@@ -18,7 +18,6 @@ $mainCategory_set = getMainCategory();
         <a href=" <?php echo '../../index.php' ?>">Панель управления</a>
     </header>
     <div class="flex px-1">
-
         <nav class="mr-1 w-1/6">
             <div class="bg-slate-500 text-white">
                 <ul class="flex flex-col border-4 border-white px-4 py-2 my-1">

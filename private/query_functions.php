@@ -206,3 +206,10 @@ function deleteSubCategory($id)
     db_disconnect($dbc);
   }
 }
+
+// ALL TRANSACTIONS
+function insertTransaction()
+{
+  global $dbc;
+  $query = "INSERT INTO all_transactions (name, prime_cat_id, main_cat_id, sub_cat_id, price, date, time) VALUES()";
+}

@@ -53,7 +53,6 @@ insertPrimeCategory($prime_name);
                     class="border-0 px-2 py-1 bg-slate-500 text-white hover:bg-slate-700 rounded cursor-pointer mt-2">Обратно</button></a>
         </div>
     </main>
-
 </body>
 
 </html>
